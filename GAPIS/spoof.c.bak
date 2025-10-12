@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <sys/syscall.h>
+#include <errno.h>  // Include errno.h for perror
+
+// Replace with the target PID
+pid_t target_pid = 17657;
+
+int main() {
+
+  pid_t pid = syscall(SYS_getpid);
+  int result = syscall(SYS_setpgid, pid, target_pid); 
+
+  if (result == 0) {
+    printf("PID successfully changed to %d\n", target_pid);
+  } else {
+    perror("Error changing PID");  // Print error message with strerror(errno)
+  }
+
+  return 0;
+}

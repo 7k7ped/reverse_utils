@@ -1,0 +1,15 @@
+VERSION = 2
+PATCHLEVEL = 6
+SUBLEVEL = 29
+EXTRAVERSION =
+
+obj-y += memory.o
+obj-y += process.o
+obj-y += verify.o
+obj-y += entry.o
+
+PWD := $(shell pwd)
+default:
+        $(MAKE) ARCH=arm64 CROSS_COMPILE=/data/user/0/aidepro.top/no_backup/ndksupport-1710240003/android-ndk-aide/toolchains/llvm/prebuilt/linux-arm64/bin- -C $(KERNEL_DIR) SUBDIRS=$(PWD) modules
+clean:
+        $(MAKE) -C $(KERNEL_DIR) SUBDIRS=$(PWD) clean

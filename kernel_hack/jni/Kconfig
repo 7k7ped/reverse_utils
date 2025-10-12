@@ -1,0 +1,6 @@
+config IO_MOD
+    tristate "Kernel Driver to read/write memory"
+    default y
+    help
+    This is the kernel driver for android system.
+
